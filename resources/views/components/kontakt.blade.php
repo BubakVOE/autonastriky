@@ -80,7 +80,8 @@
 
             <div class="h-full w-full mt-2 bg-gray-light rounded-xl">
 
-                <form action="">
+                <form action="{{ route('reservation') }}" method="POST">
+                    @csrf
                     
                     <div class=''>
                         <div class="text-center flex flex-col items-center justify-center py-4 border-b-2 border-gray-medium ">
@@ -101,7 +102,7 @@
                                                 type="text"
                                                 name="firstName"
                                                 placeholder="Pavel"
-                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-100  "
+                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom  "
                                                 >
                                         </div>
                                         
@@ -113,7 +114,7 @@
                                                 type="text"
                                                 name="lastName"
                                                 placeholder="Novák"
-                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-100  "
+                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom  "
                                                 >
                                         </div>
                                     </div>
@@ -125,7 +126,7 @@
                                             </label>
                                             <input 
                                                 type="text"
-                                                name="phone"
+                                                name="mobile"
                                                 placeholder="730681670"
                                                 class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom text-center  "
                                                 >
@@ -137,7 +138,7 @@
                                             </label>
                                             <input 
                                                 type="date"
-                                                name="email"
+                                                name="datum"
                                                 placeholder="Pavelnovak@seznam.cz"
                                                 class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom text-center  "
                                                 >
@@ -167,10 +168,10 @@
                                                 <h1>Auto</h1>
                                             </div>
 
-                                            <select name="" class="py-2 px-5 rounded focus:outline-none text-black-custom ">
-                                                <option value="" class="py-2 px-5 rounded focus:outline-none text-black tex  ">Škoda</option>
-                                                <option value=""></option>
-                                                <option value=""></option>
+                                            <select name="car" class="py-2 px-5 rounded focus:outline-none text-black-custom ">
+                                                <option value="skoda" class="py-2 px-5 rounded focus:outline-none text-black tex  ">Škoda</option>
+                                                <option value="audi">Audi</option>
+                                                <option value="bmw">BMW</option>
                                             </select>
                                         </div>
                                         
@@ -178,11 +179,11 @@
                                             <div class="mb-3 ">
                                                 <h1>Typ</h1>
                                             </div>
-
-                                            <select class="py-2 px-5 rounded focus:outline-none text-black-custom ">
-                                                <option value="">Octavia</option>
-                                                <option value="">Superb</option>
-                                                <option value=""></option>
+                                    
+                                            <select name="type" class="py-2 px-5 rounded focus:outline-none text-black-custom ">
+                                                <option value="octavia">Octavia</option>
+                                                <option value="superb">Superb</option>
+                                                <option value="Kodiaq">Kodiaq</option>
                                             </select>
                                             
                                         </div>
@@ -194,10 +195,34 @@
                         </div>
 
 
-                        <div class="text-center ">
-                            <button type="submit" class="bg-blue-600 font-bold py-2 px-6 rounded-xl transition-all hover:bg-blue-500 ">
-                                Odeslat
-                            </button>
+                        <div class="text-center relative ">
+
+
+                            @if (session()->has('message'))
+                                <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2">
+                                    <h1 class="text-gray-50 bg-green-500 rounded-2xl py-1 px-2">
+                                        {{ session()->get('message') }}
+                                    </h1>
+                                </div>
+                            
+
+                            @else
+                                <button type="submit" class="bg-blue-600 font-bold py-2 px-6  rounded-xl transition-all hover:bg-blue-500 ">
+                                    Odeslat
+                                </button>
+                            @endif
+
+
+                            @if ($errors->any())
+                                <div >
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                         </div>
      
 
