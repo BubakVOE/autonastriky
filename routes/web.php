@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 route::get('/', [NavController::class, 'index'])->name('home');
 route::get('/galerie', [NavController::class, 'galerie'])->name('galerie');
-route::get('/cenik', [NavController::class, 'cenik'])->name('ceník');
-route::get('kontakty', [NavController::class, 'kontakty'])->name('kontakty');
+route::get('/cenik', [NavController::class, 'cenik'])->name('cenik');
+route::get('kontakt', [NavController::class, 'kontakt'])->name('kontakt');

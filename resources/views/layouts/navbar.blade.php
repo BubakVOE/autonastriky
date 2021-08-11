@@ -38,7 +38,7 @@
                 </a>
             </div>
 
-            <div class="{{ active('/galerie') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
+            <div class="{{ active('galerie') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
                 <a href="{{ route('galerie') }}" class=" py-4 px-6  flex items-center justify-between  ">
                     <div class="w-10 mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  text-black-custom" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,8 +51,8 @@
                 </a>
             </div>
 
-            <div class="{{ active('/price') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
-                <a href="{{ route('ceník') }}" class=" py-4 px-6  flex items-center justify-between  ">
+            <div class="{{ active('cenik') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
+                <a href="{{ route('cenik') }}" class=" py-4 px-6  flex items-center justify-between  ">
                     <div class="w-10 mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6   text-black-custom" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -64,15 +64,15 @@
                 </a>
             </div>
 
-            <div class="{{ active('/contacts') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
-                <a href="{{ route('kontakty') }}" class=" py-4 px-6  flex items-center justify-between  ">
+            <div class="{{ active('kontakt') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
+                <a href="{{ route('kontakt') }}" class=" py-4 px-6  flex items-center justify-between  ">
                     <div class="w-10 mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black-custom" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                         </svg>
                     </div>
                     <div class="w-full">
-                        <h1 class="font-poppins text-lg text-red-custom  w-full">Kontakty</h1>
+                        <h1 class="font-poppins text-lg text-red-custom  w-full">Kontakt</h1>
                     </div>
                 </a>
             </div>
@@ -98,7 +98,7 @@
 
 
 {{-- content --}}
-    <div class="w-11/12">
+    <div class="w-11/12 text-white">
         @yield('content')
     </div>
 

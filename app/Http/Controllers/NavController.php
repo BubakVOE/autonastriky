@@ -29,9 +29,9 @@ class NavController extends Controller
 
 
 // kontakty
-    public function kontakty()
+    public function kontakt()
     {
-        return view('pages/kontaky');
+        return view('pages/kontakt');
     }
 
 }
