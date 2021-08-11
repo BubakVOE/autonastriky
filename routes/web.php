@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NavController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+route::get('/', [NavController::class, 'index'])->name('home');
+route::get('/galerie', [NavController::class, 'galerie'])->name('galerie');
+route::get('/cenik', [NavController::class, 'cenik'])->name('ceník');
+route::get('kontakty', [NavController::class, 'kontakty'])->name('kontakty');
