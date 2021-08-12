@@ -15,7 +15,10 @@
                 <div class="h-11/12 flex flex-col justify-between">
                     <div class="flex flex-col justify-center items-center my-4">
                         <h1 class="text-lg text-red-custom font-bold">Provozovna</h1>
-                        <h1 class="text-gray-300 underline"><a href="">Báblerovo náměstí 4</a></h1>
+                        <div class="flex flex-col justify-center items-center pt-5">
+                            <h1 class="text-gray-300 underline"><a href="">Báblerovo náměstí 4</a></h1>
+                            <h1 class="font-poppins text-lg text-cool-gray-200">Olomouc - Samotišky</h1>
+                        </div>
                     </div>
     
                     <div class="flex justify-center items-center">
@@ -102,7 +105,7 @@
                                                 type="text"
                                                 name="firstName"
                                                 placeholder="Pavel"
-                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom  "
+                                                class="py-2 px-5 rounded focus:outline-none text-cool-gray-600 focus:text-black-custom  "
                                                 >
                                         </div>
                                         
@@ -114,7 +117,7 @@
                                                 type="text"
                                                 name="lastName"
                                                 placeholder="Novák"
-                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom  "
+                                                class="py-2 px-5 rounded focus:outline-none text-cool-gray-600 focus:text-black-custom  "
                                                 >
                                         </div>
                                     </div>
@@ -128,7 +131,7 @@
                                                 type="text"
                                                 name="mobile"
                                                 placeholder="730681670"
-                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom text-center  "
+                                                class="py-2 px-5 rounded focus:outline-none text-cool-gray-600 focus:text-black-custom text-center  "
                                                 >
                                         </div>
                                         
@@ -139,8 +142,7 @@
                                             <input 
                                                 type="date"
                                                 name="datum"
-                                                placeholder="Pavelnovak@seznam.cz"
-                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom text-center  "
+                                                class="py-2 px-5 rounded focus:outline-none text-cool-gray-500 focus:text-black-custom text-center  "
                                                 >
                                         </div>
                                     </div>
@@ -154,7 +156,7 @@
                                                 type="text"
                                                 name="email"
                                                 placeholder="Pavelnovak@seznam.cz"
-                                                class="py-2 px-5 rounded focus:outline-none text-gray-600 focus:text-black-custom text-center  "
+                                                class="py-2 px-5 rounded focus:outline-none text-cool-gray-600 focus:text-black-custom text-center  "
                                                 >
                                         </div>
                                     </div>
@@ -207,7 +209,7 @@
                             
 
                             @else
-                                <button type="submit" class="bg-blue-600 font-bold py-2 px-6  rounded-xl transition-all hover:bg-blue-500 ">
+                                <button type="submit" class="bg-blue-light font-bold py-2 px-6  rounded-xl transition-all hover:bg-blue-500 ">
                                     Odeslat
                                 </button>
                             @endif

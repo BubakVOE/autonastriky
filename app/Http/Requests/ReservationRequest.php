@@ -46,6 +46,4 @@ class ReservationRequest extends FormRequest
             'email.required' => 'email je požadováno',
         ];
     }
-
-
 }
