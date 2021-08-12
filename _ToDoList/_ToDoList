@@ -1,0 +1,11 @@
+Historie práce
+    vytvořit v migraci Reservation boolean (done) 1/0
+    následně v dashboardu přidat funkci k měnění tady toho hovna true / false (done)
+    vytvořit další DIV, kde tady toto všechno bude
+
+Smazané věci
+    vytvořit v migraci Reservation boolean (done) 1/0
+    následně v dashboardu přidat funkci k měnění tady toho hovna true / false (done)
+    vytvořit další DIV, kde tady toto všechno bude
+
+    nasledně vytvořit routů, kde by se toto doopravdy smazalo natrvalo

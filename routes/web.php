@@ -17,19 +17,17 @@ use App\Http\Controllers\ReservationController;
 |
 */
 
-Route::get('/main', function () {
-    return view('welcome');
-});
+
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
-    route::get('/admin', [DashboardController::class, 'index']);
+    route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    route::delete('/dashboard/{id}', [DashboardController::class, 'delete'])->name('dashboard-delete');
+    route::get('/dashboard/galerie', [DashboardController::class, 'galerie'])->name('dashboard-galerie');
 });
 
-route::get('/admin/login', [DashboardController::class, 'login']);
 
 route::get('/', [NavController::class, 'index'])->name('home');
 route::get('galerie', [NavController::class, 'galerie'])->name('galerie');

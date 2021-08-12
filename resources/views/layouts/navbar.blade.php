@@ -78,18 +78,33 @@
                     </a>
                 </div>
             </div>
+            
+
     
-            <div class="flex justify-evenly ">
-                <div class="bg-gray-500 bg-gradient-to-br hover:from-purple-700 hover:to-pink-400 rounded-full ">
-                    <a href="">
-                        <img src="{{ asset('img/sc/instagram.png') }}" style="width: 40px;">
-                    </a>
+            <div class="flex flex-col justify-evenly  ">
+
+                <div class="flex justify-center items-center">
+                    @auth
+                        @if (Auth()->user()->isAdmin ==1)
+                            <a href="{{ route('dashboard') }}" class=" py-4 px-6">
+                                <h1 class="font-poppins text-lg text-blue-light  w-full">Dashboard</h1>
+                            </a>
+                         @endif
+                    @endauth
                 </div>
-                <div class="bg-gray-500 hover:bg-blue-700 rounded-full ">
-                    <a href="">
-                        <img src="{{ asset('img/sc/facebook.png') }}" style="width: 40px;">
-                    </a>
-                </div>
+
+               <div class="flex justify-evenly items-center flex-row ">
+                    <div class="bg-gray-500 bg-gradient-to-br hover:from-purple-700 hover:to-pink-400 rounded-full ">
+                        <a href="">
+                            <img src="{{ asset('img/sc/instagram.png') }}" style="width: 40px;">
+                        </a>
+                    </div>
+                    <div class="bg-gray-500 hover:bg-blue-700 rounded-full ">
+                        <a href="">
+                            <img src="{{ asset('img/sc/facebook.png') }}" style="width: 40px;">
+                        </a>
+                    </div>
+               </div>
             </div>
     
         </div>
