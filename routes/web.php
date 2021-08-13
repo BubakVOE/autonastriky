@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\GalerieController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NavController;
+use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +24,15 @@ use App\Http\Controllers\ReservationController;
 Auth::routes();
 
 
-
 Route::group(['middleware' => ['auth', 'admin']], function () {
     route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     route::delete('/dashboard/{id}', [DashboardController::class, 'delete'])->name('dashboard-delete');
-    route::get('/dashboard/galerie', [DashboardController::class, 'galerie'])->name('dashboard-galerie');
+
+    route::get('/dashboard/galerie/create', [GalerieController::class, 'create'])->name('dashboard-galerie-create');
+    route::post('/dashboard/galerie/store', [DashboardController::class, 'store'])->name('dashboard-galerie-store');
 });
+
+
 
 
 route::get('/', [NavController::class, 'index'])->name('home');
@@ -36,3 +42,8 @@ route::get('kontakt', [NavController::class, 'kontakt'])->name('kontakt');
 
 
 route::post('reservation', [ReservationController::class, 'store'])->name('reservation');
+
+
+route::get('dashboard/galerie/create', [DashboardController::class, 'view'])->name('dashboard-galerie-create');
+route::post('dashboard/galerie/store', [DashboardController::class, 'store'])->name('dashboard-galerie-store');
+

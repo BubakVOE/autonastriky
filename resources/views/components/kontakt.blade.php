@@ -4,9 +4,9 @@
 
 
 {{-- místo --}}
-        <div class=" h-full flex flex-col items-center ">
+        <div class=" h-full flex flex-col items-center  w-10/12 m-auto ">
 
-            <div class="flex flex-col items-center h-4/12 border-b-2 border-gray-light "> 
+            <div class="flex flex-col items-center border-b-2 border-gray-light pb-3 " > 
                 <img src="{{ asset('img/kontakty/location.png') }}" alt="">
                 <h1 class="font-poppins text-xl ">Místo</h1>
             </div>
@@ -31,54 +31,13 @@
 
 
         </div>
-{{-- informace + kontakty --}}
 
-        <div class=" h-full flex flex-col items-center  ">
+        {{-- rezervace --}}
+        <div class="h-full flex flex-col items-center  w-10/12 m-auto  ">
 
-            <div class="text-center flex flex-col justify-center items-center">
-
-                <div class="flex flex-col justify-center items-center my-4">
-                    <h1 class="text-lg text-red-custom font-bold">IČO</h1>
-                    <h1 class="text-gray-300">63681927</h1>
-                </div>
-
-                <div class="flex flex-col justify-center items-center my-4">
-                    <h1 class="text-lg text-red-custom font-bold">DIČ</h1>
-                    <h1 class="text-gray-300">CZ7408235307</h1>
-                </div>
-                
-                <div class="flex flex-col justify-center items-center my-4">
-                    <h1 class="text-lg text-red-custom font-bold">Zaregistrován v</h1>
-                    <h1 class="text-gray-300">Magitrátu města Olomouce</h1>
-                </div>
-            </div>
-
-            <div class="flex justify-evenly flex-col items-center my-auto border-t-2 border-b-2 border-gray-light h-5/12">
-                <h1 class="font-poppins text-xl ">Informace</h1>
-                <img src="{{ asset('img/kontakty/information.png') }}" alt="">
-                <h1 class="font-poppins text-xl ">Kontakt</h1>
-            </div>
-
-            <div class="text-center flex flex-col justify-center items-center ">
-                <div class="flex flex-col justify-center items-center my-4">
-                    <h1 class="text-lg text-red-custom font-bold">Telefonní číslo</h1>
-                    <h1 class="text-gray-300">+420 777 092 381</h1>
-                </div>
-
-                <div class="flex flex-col justify-center items-center my-4">
-                    <h1 class="text-lg text-red-custom font-bold">E-mail</h1>
-                    <h1 class="text-gray-300">ludwigjiri@seznam.cz</h1>
-                </div>
-            </div>
-
-        </div>
-
-{{-- rezervace --}}
-        <div class="h-full flex flex-col ">
-
-            <div class="flex flex-col justify-end items-center h-5/12  border-b-2 border-gray-light " > 
+            <div class="flex flex-col items-center border-b-2 border-gray-light pb-3 " > 
                 <img src="{{ asset('img/kontakty/mobile.png') }}" >
-                <h1 class="font-poppins text-lg ">Objednat</h1>
+                <h1 class="font-poppins text-lg ">Objednat online</h1>
             </div>
 
             <div class="h-full w-full mt-2 bg-gray-light rounded-xl">
@@ -224,23 +183,57 @@
                                     </ul>
                                 </div>
                             @endif
-
                         </div>
-     
-
-     
-     
                     </div>
-                
                 </form>
+            </div>
+        </div>
+{{-- informace + kontakty --}}
 
+        <div class=" h-full flex flex-col items-center  w-10/12 m-auto   ">
+
+            <div class="flex flex-col items-center border-b-2 border-gray-light pb-3 " > 
+                <img src="{{ asset('img/kontakty/information.png') }}" alt="">
+                <h1 class="font-poppins text-xl ">Kontakt & Informace</h1>
             </div>
 
+            <div class="h-full flex flex-col justify-evenly">
+                <div class="text-center flex flex-col justify-center items-center">
 
-        
-        
-        
+                    <div class="flex flex-col justify-center items-center mb-4">
+                        <h1 class="text-lg text-red-custom font-bold">IČO</h1>
+                        <h1 class="text-gray-300">63681927</h1>
+                    </div>
+    
+                    <div class="flex flex-col justify-center items-center my-4">
+                        <h1 class="text-lg text-red-custom font-bold">DIČ</h1>
+                        <h1 class="text-gray-300">CZ7408235307</h1>
+                    </div>
+                    
+                    <div class="flex flex-col justify-center items-center my-4">
+                        <h1 class="text-lg text-red-custom font-bold">Zaregistrován v</h1>
+                        <h1 class="text-gray-300">Magitrátu města Olomouce</h1>
+                    </div>
+                </div>
+    
+    
+    
+                <div class="text-center flex flex-col justify-center items-center ">
+                    <div class="flex flex-col justify-center items-center my-4">
+                        <h1 class="text-lg text-red-custom font-bold">Telefonní číslo</h1>
+                        <h1 class="text-gray-300">+420 777 092 381</h1>
+                    </div>
+    
+                    <div class="flex flex-col justify-center items-center my-4">
+                        <h1 class="text-lg text-red-custom font-bold">E-mail</h1>
+                        <h1 class="text-gray-300">ludwigjiri@seznam.cz</h1>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+
 
 
     </div>

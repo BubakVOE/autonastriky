@@ -1,96 +1,149 @@
 @extends('layouts.dasboard')
 
 @section('container')
-    
 
-<div class="flex justify-center items-center my-15  h-20">
-    @if (session()->has('message'))
-        <div class="">
-            <h1 class="font-poppins bg-red-custom rounded-lg py-2 px-3">
-                {{ session()->get('message') }}
-            </h1>
-        </div>
-    @endif
-</div>
-
-
-
-<div class="w-11/12 mx-auto">
-    <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Objednávky online</h1>
-
-
-    <div class="bg-gray-light w-full m-auto">
-        <div class="grid grid-cols-8  py-5 place-items-center font-bold font-poppins border-b-2 border-gray-medium">
-            <h1>ID</h1>
-            <h1>Jméno</h1>
-            <h1>telefonní číslo</h1>
-            <div class="flex flex-col items-center justify-center">
-                <h1>datum</h1>
-                <h1 class="font-light text-xs">rok/měsíc/den</h1>
-            </div>
-            
-            <h1>E-mail</h1>
-            <h1>auto</h1>
-            <h1>typ</h1>
-            <div class="flex flex-col items-center justify-center">
-                <h1>Upravy</h1>
-                <h1 class="font-light text-xs">smazat / hotovo</h1>
-            </div>
-        </div>
-
-        <div class="py-5">
-            @foreach ($reserve as $reserve)
-                <div class="grid grid-cols-8 place-items-center font-poppins text-sm">
-                    <h1 class="">{{ $reserve->id }}</h1>
-                    <h1>{{ $reserve->firstName }} {{ $reserve->lastName }}</h1>
-                    <h1>{{ $reserve->mobile }}</h1>
-                    <h1>{{ $reserve->datum }}</h1>
-                    <h1>{{ $reserve->email }}</h1>
-                    <h1>{{ $reserve->car }}</h1>
-                    <h1>{{ $reserve->type }}</h1>
-
-                    <div class="flex flex-row justify-evenly">
-
-                        <form action="/dashboard/{{ $reserve->id }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="mr-1 bg-red-custom px-3 py-2 rounded-l-md text-base hover:text-orange-200" type="submit" >
-                                smazat
-                            </button>
-                        </form>
-
-
-
-
-                        <button class="ml-1 bg-green-500 px-3 py-2 rounded-r-md text-base hover:text-green-200">done</button>
-                    </div>
-
-
+    <div>
+        <div class="flex justify-center items-center my-15  h-20">
+            @if (session()->has('message'))
+                <div class="">
+                    <h1 class="font-poppins bg-red-custom rounded-lg py-2 px-3">
+                        {{ session()->get('message') }}
+                    </h1>
                 </div>
-            @endforeach
+            @endif
         </div>
 
-    </div>
 
 
-    <div class="flex justify-evenly mt-20">
-        <div>
-            <h1>Smazané objednávky</h1>
+        <div class="w-11/12 mx-auto">
+            <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Objednávky online</h1>
 
-            <div>
 
+            <div class="bg-gray-light w-full m-auto">
+                <div class="grid grid-cols-8  py-5 place-items-center font-bold font-poppins border-b-2 border-gray-medium">
+                    <h1>ID</h1>
+                    <h1>Jméno</h1>
+                    <h1>telefonní číslo</h1>
+                    <div class="flex flex-col items-center justify-center">
+                        <h1>datum</h1>
+                        <h1 class="font-light text-xs">rok/měsíc/den</h1>
+                    </div>
+                    
+                    <h1>E-mail</h1>
+                    <h1>auto</h1>
+                    <h1>typ</h1>
+                    <div class="flex flex-col items-center justify-center">
+                        <h1>Upravy</h1>
+                        <h1 class="font-light text-xs">smazat / hotovo</h1>
+                    </div>
+                </div>
+
+                <div class="py-5">
+                    @foreach ($reserve as $reserve)
+                        <div class="grid grid-cols-8 place-items-center font-poppins text-sm">
+                            <h1 class="">{{ $reserve->id }}</h1>
+                            <h1>{{ $reserve->firstName }} {{ $reserve->lastName }}</h1>
+                            <h1>{{ $reserve->mobile }}</h1>
+                            <h1>{{ $reserve->datum }}</h1>
+                            <h1>{{ $reserve->email }}</h1>
+                            <h1>{{ $reserve->car }}</h1>
+                            <h1>{{ $reserve->type }}</h1>
+
+                            <div class="flex flex-row justify-evenly">
+
+                                <form action="/dashboard/{{ $reserve->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="mr-1 bg-red-custom px-3 py-2 rounded-l-md text-base hover:text-orange-200" type="submit" >
+                                        smazat
+                                    </button>
+                                </form>
+                                <button class="ml-1 bg-green-500 px-3 py-2 rounded-r-md text-base hover:text-green-200">done</button>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="flex justify-evenly mt-20">
+                <div>
+                    <h1>Smazané objednávky</h1>
+
+                    <div>
+
+                    </div>
+                </div>
+
+                <div>
+                    <h1>Hotové objednávky</h1>
+
+                    <div>
+
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div>
-            <h1>Hotové objednávky</h1>
+
+    </div>
+
+    <div class="w-11/12 mx-auto mt-1/12">
+        <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Přidat fotografie</h1>
+
+
+
+
+        <div class=" bg-gray-light p-10 overflow-auto  w-full grid gap-5 ">
+
+            <div class="grid grid-cols-5 gap-x-5">
+                <div class=" flex justify-center items-center bg-gray-medium">
+                    <a href="{{ route('dashboard-galerie-create') }}" class="h-full w-full flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="">
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                </div>
+                <div class="">
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                </div>
+                <div>
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                </div>
+                <div>
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                </div>
+            </div>
+    
+            <div class="grid grid-cols-5 gap-x-5">
+                <div class="relative opacity-75 hover:opacity-100 ">
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                    <a class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-light px-4 rounded-md py-2" href=""><h1>view more</h1></a>
+                </div>
+                <div class="">
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                </div>
+                <div class="">
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                </div>
+                <div>
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                </div>
+                <div>
+                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
+@endsection
+
+{{-- 
 <div class="flex flex-row justify-between w-10/12 mx-auto mt-1/12 ">
     <div class="w-3/12 h-48 bg-gradient-to-tr from-blue-light to-red-custom shadow-xl rounded-xl">
-       <h1>Page views</h1>
+    <h1>Page views</h1>
 
     </div>
     <div class="w-3/12 h-48 bg-gradient-to-tr from-yellow-300 to-orange-500 shadow-xl rounded-xl">
@@ -99,11 +152,7 @@
     <div class="w-3/12 h-48 bg-gradient-to-tr from-teal-500 to-blue-light shadow-xl rounded-xl">
 
     </div>
-</div>
-
-@endsection
-
-
+</div> --}}
 
 {{-- @extends('layouts.navbar')
 

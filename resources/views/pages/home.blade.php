@@ -2,9 +2,12 @@
 
 @section('content')
 
+
+
+
     <div>
         <div class="mt-5 h-screen">
-            <div class="text-center">
+            <div class="text-center ">
                 <h1 class="text-2xl font-montserrat ">Auto nástřiky</h1>
                 <h1 class="font-montserrat text-sm text-cool-gray-300">SUV a osobní auta</h1>
             </div>
@@ -12,21 +15,21 @@
         </div>
         
         <div class="mt-1/12">
-            <div class="text-center">
+            <div class="text-center border-t  pt-3 border-gray-light">
                 <h1 class="text-2xl font-montserrat ">Galerie</h1>
             </div>
             <x-galerie/>
         </div>
         
         <div class="mt-1/12">
-            <div class="text-center">
+            <div class="text-center border-t  pt-3 border-gray-light">
                 <h1 class="text-2xl font-montserrat ">Ceník</h1>
             </div>
             <x-cenik/>
         </div>
         
         <div class="mt-1/12">
-            <div class="text-center">
+            <div class="text-center border-t  pt-3 border-gray-light">
                 <h1 class="text-2xl font-montserrat ">Kontakty</h1>
             </div>
             <x-kontakt/>
