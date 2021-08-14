@@ -3,7 +3,7 @@
 @section('container')
 
     <div>
-        <div class="flex justify-center items-center my-15  h-20">
+        <div class="flex justify-center items-center my-15 h-20">
             @if (session()->has('message'))
                 <div class="">
                     <h1 class="font-poppins bg-red-custom rounded-lg py-2 px-3">
@@ -12,8 +12,6 @@
                 </div>
             @endif
         </div>
-
-
 
         <div class="w-11/12 mx-auto">
             <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Objednávky online</h1>
@@ -40,7 +38,7 @@
 
                 <div class="py-5">
                     @foreach ($reserve as $reserve)
-                        <div class="grid grid-cols-8 place-items-center font-poppins text-sm">
+                        <div class="grid grid-cols-8 place-items-center font-poppins text-sm py-1 border-b border-gray-medium">
                             <h1 class="">{{ $reserve->id }}</h1>
                             <h1>{{ $reserve->firstName }} {{ $reserve->lastName }}</h1>
                             <h1>{{ $reserve->mobile }}</h1>
@@ -67,14 +65,6 @@
 
             <div class="flex justify-evenly mt-20">
                 <div>
-                    <h1>Smazané objednávky</h1>
-
-                    <div>
-
-                    </div>
-                </div>
-
-                <div>
                     <h1>Hotové objednávky</h1>
 
                     <div>
@@ -82,12 +72,81 @@
                     </div>
                 </div>
             </div>
+            
         </div>
 
+        <div class="w-11/12 mx-auto my-1/12">
+            <div class=" flex flex-row items-center justify-between w-full mb-5 ">
+                <h1 class="text-xl font-poppins font-bold text-cool-gray-300 ">Fotogalerie</h1>
+                <a class="bg-blue-light px-2 py-3 text-center relative right-1/2 transform translate-x-1/2" href="{{ route('galerie.create') }}">přidat fotogalerie</a>
+            </div>
 
+
+
+
+            <div class="bg-gray-light w-full m-auto">
+                <div class="grid grid-cols-7  py-5 place-items-center font-bold font-poppins border-b-2 border-gray-medium">
+                    <h1>ID</h1>
+                    <h1>Název</h1>
+                    <h1>Značka</h1>
+                    <h1>Popis</h1>
+                    <h1>Thumbnail</h1>
+                    
+                    <div class="flex flex-col items-center justify-center">
+                        <h1>Datum</h1>
+                        <h1 class="font-light text-xs">rok/měsíc/den</h1>
+                    </div>
+                    
+                    <div class="flex flex-col items-center justify-center">
+                        <h1>Upravy</h1>
+                        <h1 class="font-light text-xs">upravit / hotovo</h1>
+                    </div>
+
+                </div>
+            {{-- foreach atd... --}}
+                <div class="py-5">
+                    @foreach ($galleries as $gallery)
+                        <div class="grid grid-cols-7 place-items-center align-middle border-b-2 border-gray-medium">
+                            <h1>{{ $gallery->id }}</h1>
+                            <h1>{{ $gallery->car }}</h1>
+                            <h1>{{ $gallery->type }}</h1>
+                            <p>{{ $gallery->description }}</p>
+                            <img src="cover/{{ $gallery->cover }}" style="max-height:100px; max-width:100px" >
+                            <div>
+                                <div class="flex items-center">
+                                    <h1 class="mr-2">vytvořeno</h1>
+                                    <h1 class="text-sm">{{ $gallery->created_at }}</h1>
+                                </div>
+                                <div class="flex items-center">
+                                    <h1 class="mr-2">upraveno</h1>
+                                    <h1 class="text-sm">{{ $gallery->updated_at }}</h1>
+                                </div>
+                            </div>
+
+                            <div class=" flex flex-row">
+                                <a href="/dashboard/galerie/{{ $gallery->id }}" class="rounded-l-md bg-blue-light text-gray-light mr-2 p-2 font-bold">upravit</a>
+
+                                <form action="/dashboard/galerie/delete/{{ $gallery->id }}" method="post">
+                                    @csrf
+                                    @method('delete')
+    
+                                    <button type="submit" class="rounded-r-md bg-red-custom text-gray-light ml-2 p-2 font-bold">smazat</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <div class="w-11/12 mx-auto mt-1/12">
+
+
+
+
+    {{-- <div class="w-11/12 mx-auto mt-1/12">
         <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Přidat fotografie</h1>
 
 
@@ -136,7 +195,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection
 

@@ -1,12 +1,116 @@
 @extends('layouts.dasboard')
 
-@section('specific')
+@section('container')
+    
+    <div class="h-full flex flex-col justify-center items-center mt-1/12">
+        <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Přidat fotografie</h1>
+
+            <form action="{{ route('galerie.store') }}" method="post" enctype="multipart/form-data" class="h-11/12 px-10 bg-gray-light py-10 flex flex-col items-center justify-center ">
+                @csrf
+                <div class="flex flex-col justify-evenly  h-full">
+
+                    <input type="text" 
+                            name="car" 
+                            class="py-2 px-5 rounded focus:outline-none text-cool-gray-600 focus:text-black-custom  "
+                            placeholder="název auta">
+
+                    <input type="text" 
+                            name="type" 
+                            class="py-2 px-5 rounded focus:outline-none text-cool-gray-600 focus:text-black-custom  "
+                            placeholder="typ auta">
+
+                    <Textarea name="description" 
+                                cols="20" rows="4" 
+                                class="form-textarea text-gray-light" 
+                                placeholder="popis"></Textarea>
+
+
+        
+                    <div>
+                        <div class="my-4 flex flex-col font-bold w-5/6 ">
+                            <label class="block my-2 text-white font-poppins  text-sm font-bold ">
+                                <h1>Hlavní obrázek</h1>
+                            </label>
+        
+                            <input  class="rounded focus:outline-none ml-2 text-red-custom focus:text-black-custom"
+                                    type="file" 
+                                    name="cover"
+                                    >                      
+                        </div>
+        
+                        <div class="my-4 flex flex-col font-bold w-5/6 ">
+                            <label class="block my-2 text-white font-poppins  text-sm font-bold ">
+                                <h1>Další obrázky</h1>
+                            </label>
+        
+                            <input  class="rounded focus:outline-none ml-2 text-red-custom focus:text-black-custom "
+                                    type="file" 
+                                    name="images[]" multiple
+                                    >                      
+                        </div>
+                    </div>
+
+
+                    {{-- <label class="m-2">Další obrázky</label>
+
+                    <input type="file" 
+                            id="input-file-now-custom-3" 
+                            class="" 
+                            name="images[]" multiple> --}}
+        
+                    <div class="flex justify-center">
+                        <button type="submit" class="flex flex-row justify-evenly items-center w-32 bg-blue-light px-3 py-2 rounded-md ">
+                            <h1 class="font-montserrat text-gray-light">Nahrát</h1>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+    </div>
+
+
+
+
+{{-- <div class="border-2 h-full">
+    <div class="w-4/12 m-auto">
+        <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Objednávky online</h1>
+    
+        <div class="form-group">
+            <form action="{{ route('galerie.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="text" name="title" class="form-control m-2" placeholder="název auta">
+                <input type="text" name="author" class="form-control m-2" placeholder="typ auta">
+                <Textarea name="body" cols="20" rows="4" class="form-control m-2" placeholder="popis"></Textarea>
+                <label class="m-2">Hlavní obrázek</label>
+                <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="cover">
+    
+                <label class="m-2">Další obrázky</label>
+                <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images[]" multiple>
+    
+                <div class="flex justify-center">
+                <button type="submit" class="btn btn-danger mt-3 ">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="container " style="margin-top: 50px;">
+</div> --}}
+
+    
+    
+    
+    
 
 @endsection
 
-@section('container')
+
+{{-- 
     
-    <div class="flex justify-center items-center flex-col h-full ">
+    
+        <div class="flex justify-center items-center flex-col h-full ">
         <div class="bg-gray-light p-5 w-5/12">
             <h1 class="text-xl font-poppins font-bold text-cool-gray-300 text-center my-5">Nahrát fotky</h1>
             <form action="{{route('dashboard-galerie-store')}}" method="post" enctype="multipart/form-data">
@@ -42,11 +146,9 @@
 
 
     <x-jquerScript/>
+    
+    --}}
 
-
-
-
-@endsection
 
 {{-- 
     
