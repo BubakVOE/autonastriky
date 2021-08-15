@@ -15,11 +15,6 @@ class Post extends Model
         'car',
         'type',
         'description',
-
-
-        'title',
-        'author',
-        'body',
         'cover',
     ];
 

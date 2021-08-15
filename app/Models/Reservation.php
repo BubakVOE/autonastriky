@@ -17,5 +17,7 @@ class Reservation extends Model
         'email',
         'car',
         'type',
+
+        'done'
     ];
 }

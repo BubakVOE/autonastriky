@@ -56,27 +56,76 @@
                                         smazat
                                     </button>
                                 </form>
-                                <button class="ml-1 bg-green-500 px-3 py-2 rounded-r-md text-base hover:text-green-200">done</button>
+
+                                <div class="flex items-center justify-center">
+                                    <a href="/dashboard/galerie/show{{ $reserve->id }}" class="ml-1 bg-blue-light px-3 py-2 rounded-r-md text-base hover:text-orange-200">Show</a>
+                                </div>
+
+                                {{-- <form action="/dashboard/reservation/update/{{ $reserve->id }}" method="POST">
+                                    @method('PUT')
+                                    @csrf
+                                    <select name="done" id="done" class="text-cool-gray-500">
+                                        <option value="0">nic</option>
+                                        <option value="1">hotovo</option>
+                                        
+                                    </select>
+    
+                                    <button type="submit">potvrdit</button>
+                                </form> --}}
+
+
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
 
+
+
+
+
             <div class="flex justify-evenly mt-20">
                 <div>
                     <h1>Hotové objednávky</h1>
 
-                    <div>
+                    <div class="bg-gray-light p-5 w-full m-auto">
+                        <div class="grid grid-cols-8 py-1 place-items-center  font-bold font-poppins border-b-2 border-gray-medium">
+                            <h1>ID</h1>
+                            <h1>Jméno</h1>
+                            <h1>telefonní číslo</h1>
+                            <div class="flex flex-col items-center justify-center">
+                                <h1>datum</h1>
+                                <h1 class="font-light text-xs">rok/měsíc/den</h1>
+                            </div>
+                            
+                            <h1>E-mail</h1>
+                            <h1>auto</h1>
+                            <h1>typ</h1>
+                            <div class="flex flex-col items-center justify-center">
+                                <h1>Upravy</h1>
+                                <h1 class="font-light text-xs">smazat / hotovo</h1>
+                            </div>
+                        </div>
+        
+                        <div class="py-5">
 
+                        </div>
                     </div>
                 </div>
             </div>
             
         </div>
 
+
+
+
+
+
+
+
+
         <div class="w-11/12 mx-auto my-1/12">
-            <div class=" flex flex-row items-center justify-between w-full mb-5 ">
+            <div class=" flex flex-row items-center justify-between w-full mb-3 ">
                 <h1 class="text-xl font-poppins font-bold text-cool-gray-300 ">Fotogalerie</h1>
                 <a class="bg-blue-light px-2 py-3 text-center relative right-1/2 transform translate-x-1/2" href="{{ route('galerie.create') }}">přidat fotogalerie</a>
             </div>
@@ -85,7 +134,7 @@
 
 
             <div class="bg-gray-light w-full m-auto">
-                <div class="grid grid-cols-7  py-5 place-items-center font-bold font-poppins border-b-2 border-gray-medium">
+                <div class="grid grid-cols-7  py-5 place-items-center  font-bold font-poppins border-b-2 border-gray-medium">
                     <h1>ID</h1>
                     <h1>Název</h1>
                     <h1>Značka</h1>
@@ -104,23 +153,34 @@
 
                 </div>
             {{-- foreach atd... --}}
-                <div class="py-5">
+                <div class="">
                     @foreach ($galleries as $gallery)
-                        <div class="grid grid-cols-7 place-items-center align-middle border-b-2 border-gray-medium">
+                        <div class="grid grid-cols-7 place-items-center border-b-2 border-gray-medium py-2">
+
                             <h1>{{ $gallery->id }}</h1>
+
                             <h1>{{ $gallery->car }}</h1>
+
                             <h1>{{ $gallery->type }}</h1>
-                            <p>{{ $gallery->description }}</p>
+
+                            <div class="">
+                                <p class="overflow-auto text-white rounded-xl w-52 " >{{ $gallery->description }}</p>
+                            </div>
+
                             <img src="cover/{{ $gallery->cover }}" style="max-height:100px; max-width:100px" >
+
                             <div>
+
                                 <div class="flex items-center">
                                     <h1 class="mr-2">vytvořeno</h1>
                                     <h1 class="text-sm">{{ $gallery->created_at }}</h1>
                                 </div>
+
                                 <div class="flex items-center">
                                     <h1 class="mr-2">upraveno</h1>
                                     <h1 class="text-sm">{{ $gallery->updated_at }}</h1>
                                 </div>
+
                             </div>
 
                             <div class=" flex flex-row">

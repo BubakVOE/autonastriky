@@ -24,6 +24,8 @@ class CreateReservationsTable extends Migration
             $table->string('car')->nullable();
             $table->string('type')->nullable();
             
+            $table->boolean('done')->default(0);
+
             $table->timestamps();
         });
     }

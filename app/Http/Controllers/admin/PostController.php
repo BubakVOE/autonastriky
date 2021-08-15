@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Post;
-use App\Models\Image;
+use App\Models\Galerie;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+
+
+
 
 class PostController extends Controller
 {
@@ -55,7 +59,7 @@ class PostController extends Controller
                         $request['post_id']=$post->id;
                         $request['image']=$imageName;
                         $file->move(\public_path("/images"),$imageName);
-                        Image::create($request->all());
+                        Galerie::create($request->all());
     
                     }
                 }
@@ -102,6 +106,7 @@ class PostController extends Controller
     
     {
         $post=Post::findOrFail($id);
+        
         if($request->hasFile("cover")){
             if (File::exists("cover/".$post->cover)) {
                 File::delete("cover/".$post->cover);
@@ -126,7 +131,7 @@ class PostController extends Controller
                    $request["post_id"]=$id;
                    $request["image"]=$imageName;
                    $file->move(\public_path("images"),$imageName);
-                   Image::create($request->all());
+                   Galerie::create($request->all());
    
                }
            }
@@ -138,14 +143,14 @@ class PostController extends Controller
 
     public function deleteimage($id)
     {
-        $images=Image::findOrFail($id);
+        $images=Galerie::findOrFail($id);
 
         if (File::exists("images/".$images->image))
         {
            File::delete("images/".$images->image);
         }
 
-       Image::find($id)->delete();
+       Galerie::find($id)->delete();
        return back();
    }
 
@@ -172,7 +177,7 @@ class PostController extends Controller
         if (File::exists("cover/".$posts->cover)) {
             File::delete("cover/".$posts->cover);
         }
-        $images=Image::where("post_id",$posts->id)->get();
+        $images=Galerie::where("post_id",$posts->id)->get();
         foreach($images as $image){
         if (File::exists("images/".$image->image)) {
            File::delete("images/".$image->image);

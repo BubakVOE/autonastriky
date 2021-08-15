@@ -20,10 +20,6 @@ class CreatePostsTable extends Migration
             $table->string('car')->nullable();
             $table->string('type')->nullable();
             $table->longText('description')->nullable();
-
-            $table->string('author')->nullable();
-            $table->string('title')->nullable();
-            $table->text('body')->nullable();
             $table->text('cover')->nullable();
 
             $table->timestamps();

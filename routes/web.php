@@ -1,15 +1,13 @@
 <?php
 
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\GalerieController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NavController;
-use App\Http\Controllers\PhotosController;
-use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ReservationController;
-use App\Http\Controllers\TestController;
-use App\Models\Post;
+
+use App\Http\Controllers\admin\PostController;
+use App\Http\Controllers\admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,32 +28,34 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
 });
 
-route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-route::delete('/dashboard/{id}', [DashboardController::class, 'delete'])->name('dashboard-delete');
+    route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    route::delete('/dashboard/{id}', [DashboardController::class, 'delete'])->name('dashboard-delete');
 
-route::get('/dashboard/galerie/create', [PostController::class, 'create'])->name('galerie.create');
-route::post('/dashboard/galerie/store', [PostController::class, 'store'])->name('galerie.store');
-route::get('/dashboard/galerie/{id}', [PostController::class, 'edit'])->name('galerie.edit');
-route::put('/dashboard/galerie/update/{id}', [PostController::class, 'update']);
-Route::delete('/dashboard/galerie/delete/{id}',[PostController::class,'destroy']);
+    route::get('/dashboard/galerie/create', [PostController::class, 'create'])->name('galerie.create');
+    route::post('/dashboard/galerie/store', [PostController::class, 'store'])->name('galerie.store');
+    route::get('/dashboard/galerie/{id}', [PostController::class, 'edit'])->name('galerie.edit');
+    route::put('/dashboard/galerie/update/{id}', [PostController::class, 'update']);
+    Route::delete('/dashboard/galerie/delete/{id}',[PostController::class,'destroy']);
 
-Route::delete('/dashboard/galerie/deleteimage/{id}',[PostController::class,'deleteimage']);
-Route::delete('/dashboard/galerie/deletecover/{id}',[PostController::class,'deletecover']);
-
-
+    Route::delete('/dashboard/galerie/deleteimage/{id}',[PostController::class,'deleteimage']);
+    Route::delete('/dashboard/galerie/deletecover/{id}',[PostController::class,'deletecover']);
 
 
 
+// route::put('/dashboard/reservation/update/{id}', [ReservationController::class, 'update']);
 
 
-route::get('/', [NavController::class, 'index'])->name('home');
-route::get('galerie', [NavController::class, 'galerie'])->name('galerie');
-route::get('cenik', [NavController::class, 'cenik'])->name('cenik');
-route::get('kontakt', [NavController::class, 'kontakt'])->name('kontakt');
+
+
+// public
+route::get('/', [PagesController::class, 'index'])->name('home');
+route::get('galerie', [PagesController::class, 'galerie'])->name('galerie');
+route::get('cenik', [PagesController::class, 'cenik'])->name('cenik');
+route::get('kontakt', [PagesController::class, 'kontakt'])->name('kontakt');
 
 
 route::post('reservation', [ReservationController::class, 'store'])->name('reservation');
-
+route::get('dashboard/galerie/show/{id}', [ReservationController::class, 'show']);
 
 
 
