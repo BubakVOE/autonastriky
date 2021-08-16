@@ -21,7 +21,7 @@
                     <p class="font-poppins">Ukázka některých aut, které byly umyty, nastříkany nové dutiny a vyčištěny disky </p>
             
                     <div class="mt-5">
-                        <a class="bg-red-custom  text-gray-light font-bold text-lg py-2 px-3 font-poppins rounded-md focus:outline-none">
+                        <a href=""  class="bg-red-custom  text-gray-light font-bold text-lg py-2 px-3 font-poppins rounded-md focus:outline-none">
                             Zobrazit více
                         </a>
                     </div>
@@ -33,7 +33,7 @@
                         @foreach ($thumbnails as $thumbnail)
                             <div class="flex flex-col justify-center items-center bg-gray-medium p-2 ">
                                 <div class="">
-                                    <img src="cover/{{ $thumbnail->cover }}" class="h-52" >
+                                    <img src="{{ asset('posts/thumbNail/'.$thumbnail->cover) }}" class="h-52" >
                                 </div>
 
                                 <div class="flex justify-between flex-row my-5 w-full">
@@ -42,7 +42,7 @@
                                     </div>
 
                                     <div class="">
-                                        <a href="/galerie/{{ $thumbnail->id }}" class="bg-red-custom text-gray-light  px-2 py-1 font-poppins rounded-md focus:outline-none ">
+                                        <a href="/post/show/{{ $thumbnail->id }}" class="bg-red-custom text-gray-light  px-2 py-1 font-poppins rounded-md focus:outline-none ">
                                             Zobrazit více
                                         </a>
                                     </div>

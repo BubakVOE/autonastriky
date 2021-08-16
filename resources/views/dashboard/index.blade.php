@@ -13,6 +13,8 @@
             @endif
         </div>
 
+
+{{-- Objednávky online --}}
         <div class="w-11/12 mx-auto">
             <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Objednávky online</h1>
 
@@ -24,7 +26,7 @@
                     <h1>telefonní číslo</h1>
                     <div class="flex flex-col items-center justify-center">
                         <h1>datum</h1>
-                        <h1 class="font-light text-xs">rok/měsíc/den</h1>
+                        <h1 class="font-light text-xs">den/měsíc/rok</h1>
                     </div>
                     
                     <h1>E-mail</h1>
@@ -36,66 +38,58 @@
                     </div>
                 </div>
 
-                <div class="py-5">
-                    @foreach ($reserve as $reserve)
-                        <div class="grid grid-cols-8 place-items-center font-poppins text-sm py-1 border-b border-gray-medium">
-                            <h1 class="">{{ $reserve->id }}</h1>
-                            <h1>{{ $reserve->firstName }} {{ $reserve->lastName }}</h1>
-                            <h1>{{ $reserve->mobile }}</h1>
-                            <h1>{{ $reserve->datum }}</h1>
-                            <h1>{{ $reserve->email }}</h1>
-                            <h1>{{ $reserve->car }}</h1>
-                            <h1>{{ $reserve->type }}</h1>
+                <div class="">
+                    @foreach ($reservation as $reserve)
 
-                            <div class="flex flex-row justify-evenly">
+                        @if ($reserve->done == 0)
+                            <div class="grid grid-cols-8 place-items-center font-poppins text-sm py-4 border-b border-gray-medium">
+                                <h1 class="">{{ $reserve->id }}</h1>
+                                <h1>{{ $reserve->firstName }} {{ $reserve->lastName }}</h1>
+                                <h1>{{ $reserve->mobile }}</h1>
+                                <h1>{{ date('jS M Y', strtotime($reserve->datum)) }}</h1>
+                                <h1>{{ $reserve->email }}</h1>
+                                <h1>{{ $reserve->car }}</h1>
+                                <h1>{{ $reserve->type }}</h1>
 
-                                <form action="/dashboard/{{ $reserve->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="mr-1 bg-red-custom px-3 py-2 rounded-l-md text-base hover:text-orange-200" type="submit" >
-                                        smazat
-                                    </button>
-                                </form>
+                                <div class="flex flex-row justify-evenly">
 
-                                <div class="flex items-center justify-center">
-                                    <a href="/dashboard/galerie/show{{ $reserve->id }}" class="ml-1 bg-blue-light px-3 py-2 rounded-r-md text-base hover:text-orange-200">Show</a>
+                                    <form action="/dashboard/reserve/delete/{{ $reserve->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="mr-1 bg-red-custom px-3 py-2 rounded-l-md text-base hover:text-orange-200 focus:outline-none" type="submit" >
+                                            smazat
+                                        </button>
+                                    </form>
+
+                                    <form action="/dashboard/reserve/update/{{ $reserve->id }}" method="POST">
+                                        @method('PUT')
+                                        @csrf
+                                            <input type="hidden" name="done"/>
+                                            <button class="ml-1 bg-green-500 px-3 py-2 rounded-r-md text-base hover:text-green-200 focus:outline-none" type="submit">
+                                                Done
+                                            </button>
+                                    </form>
+
                                 </div>
-
-                                {{-- <form action="/dashboard/reservation/update/{{ $reserve->id }}" method="POST">
-                                    @method('PUT')
-                                    @csrf
-                                    <select name="done" id="done" class="text-cool-gray-500">
-                                        <option value="0">nic</option>
-                                        <option value="1">hotovo</option>
-                                        
-                                    </select>
-    
-                                    <button type="submit">potvrdit</button>
-                                </form> --}}
-
-
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
 
 
-
-
-
             <div class="flex justify-evenly mt-20">
                 <div>
-                    <h1>Hotové objednávky</h1>
+                    <h1 class="text-base font-poppins font-bold text-cool-gray-300 mb-3">Hotové objednávky</h1>
 
-                    <div class="bg-gray-light p-5 w-full m-auto">
-                        <div class="grid grid-cols-8 py-1 place-items-center  font-bold font-poppins border-b-2 border-gray-medium">
+                    <div class="bg-gray-light  w-full m-auto">
+                        <div class="grid grid-cols-8  py-5 place-items-center font-bold font-poppins border-b-2 border-gray-medium">
                             <h1>ID</h1>
                             <h1>Jméno</h1>
                             <h1>telefonní číslo</h1>
                             <div class="flex flex-col items-center justify-center">
                                 <h1>datum</h1>
-                                <h1 class="font-light text-xs">rok/měsíc/den</h1>
+                                <h1 class="font-light text-xs">den/měsíc/rok</h1>
                             </div>
                             
                             <h1>E-mail</h1>
@@ -103,13 +97,37 @@
                             <h1>typ</h1>
                             <div class="flex flex-col items-center justify-center">
                                 <h1>Upravy</h1>
-                                <h1 class="font-light text-xs">smazat / hotovo</h1>
+                                <h1 class="font-light text-xs">smazat</h1>
                             </div>
                         </div>
         
-                        <div class="py-5">
+                        <div class="">
+                            @foreach ($reservation as $reserve)
+                                @if ($reserve->done == 1)
+                                <div class="grid grid-cols-8 place-items-center font-poppins text-sm py-4 border-b border-gray-medium">
+                                    <h1 class="">{{ $reserve->id }}</h1>
+                                        <h1>{{ $reserve->firstName }} {{ $reserve->lastName }}</h1>
+                                        <h1>{{ $reserve->mobile }}</h1>
+                                        <h1>{{ date('jS M Y', strtotime($reserve->datum)) }}</h1>
+                                        <h1>{{ $reserve->email }}</h1>
+                                        <h1>{{ $reserve->car }}</h1>
+                                        <h1>{{ $reserve->type }}</h1>
+                                        
+                                        <div class="flex flex-row justify-evenly">        
+                                            <form action="/dashboard/reserve/delete/{{ $reserve->id }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="mr-1 bg-red-custom px-3 py-2 rounded-md text-base hover:text-orange-200" type="submit" >
+                                                    smazat
+                                                </button>
+                                            </form>
+                                        </div>
 
+                                    </div>                               
+                                @endif
+                            @endforeach
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -117,21 +135,14 @@
         </div>
 
 
+        <hr class="my-1/12 border-b-2 border-gray-light">
 
-
-
-
-
-
-
-        <div class="w-11/12 mx-auto my-1/12">
+{{-- fotogalerie --}}
+        <div class="w-11/12 mx-auto ">
             <div class=" flex flex-row items-center justify-between w-full mb-3 ">
                 <h1 class="text-xl font-poppins font-bold text-cool-gray-300 ">Fotogalerie</h1>
                 <a class="bg-blue-light px-2 py-3 text-center relative right-1/2 transform translate-x-1/2" href="{{ route('galerie.create') }}">přidat fotogalerie</a>
             </div>
-
-
-
 
             <div class="bg-gray-light w-full m-auto">
                 <div class="grid grid-cols-7  py-5 place-items-center  font-bold font-poppins border-b-2 border-gray-medium">
@@ -143,7 +154,7 @@
                     
                     <div class="flex flex-col items-center justify-center">
                         <h1>Datum</h1>
-                        <h1 class="font-light text-xs">rok/měsíc/den</h1>
+                        <h1 class="font-light text-xs">den/měsíc/rok</h1>
                     </div>
                     
                     <div class="flex flex-col items-center justify-center">
@@ -154,39 +165,38 @@
                 </div>
             {{-- foreach atd... --}}
                 <div class="">
-                    @foreach ($galleries as $gallery)
+                    @foreach ($posts as $post)
                         <div class="grid grid-cols-7 place-items-center border-b-2 border-gray-medium py-2">
 
-                            <h1>{{ $gallery->id }}</h1>
+                            <h1>{{ $post->id }}</h1>
 
-                            <h1>{{ $gallery->car }}</h1>
+                            <h1>{{ $post->car }}</h1>
 
-                            <h1>{{ $gallery->type }}</h1>
+                            <h1>{{ $post->type }}</h1>
 
-                            <div class="">
-                                <p class="overflow-auto text-white rounded-xl w-52 " >{{ $gallery->description }}</p>
-                            </div>
+                            <p class="overflow-auto text-white w-52 m-auto text-center " >{{ $post->description }}</p>
 
-                            <img src="cover/{{ $gallery->cover }}" style="max-height:100px; max-width:100px" >
+                            <img src="posts/thumbNail/{{ $post->cover }}" style="max-height:100px; max-width:100px" >
 
-                            <div>
+                            <div class="flex flex-col justify-center items-center">
 
-                                <div class="flex items-center">
+                                <div class="flex items-center text-sm">
                                     <h1 class="mr-2">vytvořeno</h1>
-                                    <h1 class="text-sm">{{ $gallery->created_at }}</h1>
+                                    <h1>{{ date('jS M Y', strtotime($post->created_at)) }}</h1>
+
                                 </div>
 
-                                <div class="flex items-center">
+                                <div class="flex items-center text-sm">
                                     <h1 class="mr-2">upraveno</h1>
-                                    <h1 class="text-sm">{{ $gallery->updated_at }}</h1>
+                                    <h1 class="text-sm">{{ date('jS M Y', strtotime($post->updated_at)) }}</h1>
                                 </div>
 
                             </div>
 
                             <div class=" flex flex-row">
-                                <a href="/dashboard/galerie/{{ $gallery->id }}" class="rounded-l-md bg-blue-light text-gray-light mr-2 p-2 font-bold">upravit</a>
+                                <a href="/dashboard/post/edit/{{ $post->id }}" class="rounded-l-md bg-blue-light text-gray-light mr-2 p-2 font-bold">upravit</a>
 
-                                <form action="/dashboard/galerie/delete/{{ $gallery->id }}" method="post">
+                                <form action="/dashboard/post/delete/{{ $post->id }}" method="post">
                                     @csrf
                                     @method('delete')
     
@@ -200,62 +210,13 @@
             </div>
 
         </div>
+
+
+        <hr class="my-1/12 border-b-2 border-gray-light">
+
+        
+
     </div>
-
-
-
-
-
-    {{-- <div class="w-11/12 mx-auto mt-1/12">
-        <h1 class="text-xl font-poppins font-bold text-cool-gray-300 mb-3">Přidat fotografie</h1>
-
-
-
-
-        <div class=" bg-gray-light p-10 overflow-auto  w-full grid gap-5 ">
-
-            <div class="grid grid-cols-5 gap-x-5">
-                <div class=" flex justify-center items-center bg-gray-medium">
-                    <a href="{{ route('dashboard-galerie-create') }}" class="h-full w-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </a>
-                </div>
-                <div class="">
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                </div>
-                <div class="">
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                </div>
-                <div>
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                </div>
-                <div>
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                </div>
-            </div>
-    
-            <div class="grid grid-cols-5 gap-x-5">
-                <div class="relative opacity-75 hover:opacity-100 ">
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                    <a class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-light px-4 rounded-md py-2" href=""><h1>view more</h1></a>
-                </div>
-                <div class="">
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                </div>
-                <div class="">
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                </div>
-                <div>
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                </div>
-                <div>
-                    <img src="{{ asset('img/galerie/auto/1.jpg') }}">
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
 @endsection
 

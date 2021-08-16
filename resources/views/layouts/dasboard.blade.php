@@ -6,7 +6,7 @@
     
 <div class="h-full flex flex-col ">
 
-    <div class="h-1/12 flex items-center justify-around bg-gray-light mt-1 mr-1  p-5">
+    <div class="h-1/12 flex items-center justify-around bg-gray-light mt-1 mr-1 py-4 px-2">
 
         <div class="flex flex-row justify-evenly items-center w-3/12 h-full ">
 

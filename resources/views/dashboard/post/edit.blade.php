@@ -7,13 +7,13 @@
     <div class="flex flex-col justify-center items-center">
 
         <div class="w-full">
-            <h1 class="text-xl font-poppins  text-cool-gray-300 mt-1/12 text-center border-b-2 w-10/12 m-auto border-gray-light pb-2">Aktuální informace k <span class="font-bold">{{ $posts->car }}</span> <span class="font-bold">{{ $posts->type }}</span></h1>
+            <h1 class="text-xl font-poppins  text-cool-gray-300 mt-1/12 text-center border-b-2 w-10/12 m-auto border-gray-light pb-2">Aktuální informace k <span class="font-bold">{{ $post->car }}</span> <span class="font-bold">{{ $post->type }}</span></h1>
 
             <div class="flex justify-center flex-col">
                 <div class="flex flex-col justify-center items-center my-5">
                     <h1 class="font-poppins">Thumbnail</h1>
         
-                    <form action="/dashboard/galerie/deletecover/{{ $posts->id }}" method="post">
+                    <form action="/dashboard/post/deleteThumbnail/{{ $post->id }}" method="post">
                         <button class="flex items-center justify-center bg-red-custom rounded-full p-1 my-3  ">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -22,34 +22,34 @@
                         @csrf
                         @method('delete')
                     </form>
-                        <img src="/cover/{{ $posts->cover }}" class="img-responsive" style="max-height: 350px; max-width: 350px;">            
+                    <img src="{{ asset('posts/thumbNail/'.$post->cover) }}" style="max-height:100px; max-width:100px" >
                 </div>
 
 
                 <div class="h-full flex flex-col justify-center items-center mt-1/12">
                     <h1 class="text-xl font-poppins font-bold text-cool-gray-300 text-center pb-4">Upravit údaje</h1>
 
-                        <form action="/dashboard/galerie/update/{{ $posts->id }}" method="post" enctype="multipart/form-data" class="h-11/12 px-10 bg-gray-light py-10 flex flex-col items-center justify-center ">
+                        <form action="/dashboard/post/update/{{ $post->id }}" method="post" enctype="multipart/form-data" class="h-11/12 px-10 bg-gray-light py-10 flex flex-col items-center justify-center ">
                             @csrf
                             @method('PUT')
                             <div class="flex flex-col justify-evenly  h-full">
                 
                                 <input type="text" 
                                         name="car" 
-                                        value="{{ $posts->car }}"
+                                        value="{{ $post->car }}"
                                         class="py-2 px-5 my-2 rounded focus:outline-none text-cool-gray-600 focus:text-black-custom  "
                                         placeholder="název auta">
                 
                                 <input type="text" 
                                         name="type" 
-                                        value="{{ $posts->type }}"
+                                        value="{{ $post->type }}"
                                         class="py-2 px-5 my-2 rounded focus:outline-none text-cool-gray-600 focus:text-black-custom  "
                                         placeholder="typ auta">
                 
                                 <Textarea name="description" 
                                             cols="20" rows="4" 
                                             class="form-textarea my-2  text-gray-light" 
-                                            placeholder="popis">{{ $posts->description }}</Textarea>
+                                            placeholder="popis">{{ $post->description }}</Textarea>
                 
                 
                     
@@ -93,13 +93,13 @@
                     <h1 class="font-poppins pb-5">Další obrázky:</h1>
     
                     <div class="flex justify-row justify-evenly  bg-gray-light p-5 w-8/12">
-                        @if (count($posts->images)>0)
+                        @if (count($post->images)>0)
     
     
-                            @foreach ($posts->images as $img)
+                            @foreach ($post->images as $img)
         
                                 <div class="flex flex-col items-center justify-between ">
-                                    <form action="/dashboard/galerie/deleteimage/{{ $img->id }}" method="post">
+                                    <form action="/dashboard/post/deleteimage/{{ $img->id }}" method="post">
                                         <button class="flex items-center justify-center bg-red-custom rounded-full p-1 my-3  ">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -110,12 +110,16 @@
                                     </form>
     
                                     <div>
-                                        <img src="/images/{{ $img->image }}" class="img-responsive" style="max-height: 100px; max-width: 100px;">
+                                        <img src="{{ asset('posts/images/'.$img->image) }}" class="img-responsive" style="max-height: 100px; max-width: 100px;">
+                                        {{-- <img src="posts/images/{{  }}" class="img-responsive" style="max-height: 100px; max-width: 100px;"> --}}
                                     </div>
     
                                 </div>
                             
                             @endforeach
+
+                        @else 
+                            <h1>Žádné obrázky zde zatím nejsou nahrané</h1>
                         @endif
                     </div>
                 </div>
@@ -136,10 +140,4 @@
 
 @endsection
 
-
-
-
-
-
-
-
+ 

@@ -10,33 +10,22 @@ use Illuminate\Support\Facades\File;
 
 
 
-
 class PostController extends Controller
 {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        return view('admin.create');
+        return view('dashboard.post.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         {
             if($request->hasFile("cover")){
                 $file=$request->file("cover");
                 $imageName=time().'-'.$file->getClientOriginalName();
-                $file->move(\public_path("cover/"),$imageName);
+                $file->move(\public_path("posts/thumbNail"),$imageName);
     
                 $post =new Post([
 
@@ -58,7 +47,7 @@ class PostController extends Controller
                         $imageName=time().'-'.$file->getClientOriginalName();
                         $request['post_id']=$post->id;
                         $request['image']=$imageName;
-                        $file->move(\public_path("/images"),$imageName);
+                        $file->move(\public_path("posts/images"),$imageName);
                         Galerie::create($request->all());
     
                     }
@@ -69,41 +58,21 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function show(Post $post)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::find($id);
 
-        return view('admin.edit', [
-            'posts' => $post,
+        return view('dashboard.post.edit', [
+            'post' => $post,
         ]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+// update
     public function update(Request $request, $id)
-    
     {
         $post=Post::findOrFail($id);
         
@@ -113,7 +82,7 @@ class PostController extends Controller
             }
             $file=$request->file("cover");
             $post->cover=time()."_".$file->getClientOriginalName();
-            $file->move(\public_path("/cover"),$post->cover);
+            $file->move(\public_path("posts/thumbNail"),$post->cover);
             $request['cover']=$post->cover;
         }
    
@@ -130,38 +99,35 @@ class PostController extends Controller
                    $imageName=time().'_'.$file->getClientOriginalName();
                    $request["post_id"]=$id;
                    $request["image"]=$imageName;
-                   $file->move(\public_path("images"),$imageName);
+                   $file->move(\public_path("posts/images"),$imageName);
                    Galerie::create($request->all());
    
                }
            }
    
            return redirect("/dashboard");
-   
-       }
-
-
+    }
+// delete imagies
     public function deleteimage($id)
     {
         $images=Galerie::findOrFail($id);
 
-        if (File::exists("images/".$images->image))
+        if (File::exists("posts/images/".$images->image))
         {
-           File::delete("images/".$images->image);
+           File::delete("posts/images/".$images->image);
         }
 
        Galerie::find($id)->delete();
        return back();
    }
-
-
+// delete thumbnail
     public function deletecover($id)
     {
         $cover=Post::findOrFail($id)->cover;
         
-        if (File::exists("cover/".$cover)) 
+        if (File::exists("posts/cover/".$cover)) 
         {
-            File::delete("cover/".$cover);
+            File::delete("posts/cover/".$cover);
         }
     return back();
     }

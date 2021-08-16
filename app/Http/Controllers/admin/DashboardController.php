@@ -15,32 +15,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $reserve = Reservation::all();
-        $galerie = Post::all();
+        $reservation = Reservation::all();
 
-        return view('admin.dashboard', [
-            'reserve' => $reserve,
-            'galleries' => $galerie,
+        $post = Post::all();
+
+        return view('dashboard.index', [
+            'reservation' => $reservation,
+            'posts' => $post,
         ]);
     }
 
-    public function delete($id)
-    {
-        $test = Reservation::find($id);
-        $test->delete();
-
-        return back()->with('message', 'Úspešně se ti povedlo smazat');
-    }
-
-
 }
 
-
-
-
-    // public function login()
-    // {
-    //     return view('admin.login');
-
-    //     return redirect('/admin');
-    // }
