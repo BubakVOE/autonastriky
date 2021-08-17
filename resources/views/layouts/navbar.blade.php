@@ -27,7 +27,7 @@
             </div>
     
             <div class="flex flex-col h-3/12">
-                <div class="{{ active('/') }} border-b-2 border-t-2 border-gray-medium w-full hover:bg-gray-medium ">
+                <div class="border-b-2 border-t-2 border-gray-medium w-full hover:bg-gray-medium ">
                     <a href="{{ route('home') }}" class=" py-4 px-6  flex items-center justify-between  ">
                         <div class="w-10 mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black-custom" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -40,8 +40,8 @@
                     </a>
                 </div>
     
-                <div class="{{ active('galerie') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
-                    <a href="" class=" py-4 px-6  flex items-center justify-between  ">
+                <div onclick="posunGalerie()" class="border-b-2 cursor-pointer border-gray-medium w-full hover:bg-gray-medium">
+                    <a class=" py-4 px-6  flex items-center justify-between  ">
                         <div class="w-10 mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  text-black-custom" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -53,8 +53,8 @@
                     </a>
                 </div>
     
-                <div class="{{ active('cenik') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
-                    <a href="" class=" py-4 px-6  flex items-center justify-between  ">
+                <div onclick="posunCenik()" class="border-b-2 cursor-pointer border-gray-medium w-full hover:bg-gray-medium">
+                    <a class=" py-4 px-6  flex items-center justify-between  ">
                         <div class="w-10 mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6   text-black-custom" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -66,8 +66,8 @@
                     </a>
                 </div>
     
-                <div class="{{ active('kontakt') }} border-b-2 border-gray-medium w-full hover:bg-gray-medium">
-                    <a href="" class=" py-4 px-6  flex items-center justify-between  ">
+                <div onclick="posunKontakt()" class="border-b-2 cursor-pointer border-gray-medium w-full hover:bg-gray-medium">
+                    <a class=" py-4 px-6  flex items-center justify-between  ">
                         <div class="w-10 mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black-custom" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -124,6 +124,20 @@
 
 </body>
     <script>
-          yield('script')
+        function posunHome() {
+        document.getElementById("home").scrollIntoView();
+        }
+
+        function posunGalerie() {
+        document.getElementById("galerie").scrollIntoView();
+        }
+
+        function posunCenik() {
+        document.getElementById("cenik").scrollIntoView();
+        }
+
+        function posunKontakt() {
+        document.getElementById("kontakt").scrollIntoView();
+        }    
     </script>
 </html>

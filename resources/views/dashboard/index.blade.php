@@ -141,7 +141,7 @@
         <div class="w-11/12 mx-auto ">
             <div class=" flex flex-row items-center justify-between w-full mb-3 ">
                 <h1 class="text-xl font-poppins font-bold text-cool-gray-300 ">Fotogalerie</h1>
-                <a class="bg-blue-light px-2 py-3 text-center relative right-1/2 transform translate-x-1/2" href="{{ route('galerie.create') }}">přidat fotogalerie</a>
+                <a class="bg-red-custom rounded-xl font-bold px-2 py-3 text-center relative right-1/2 transform translate-x-1/2" href="{{ route('galerie.create') }}">přidat fotogalerie</a>
             </div>
 
             <div class="bg-gray-light w-full m-auto">

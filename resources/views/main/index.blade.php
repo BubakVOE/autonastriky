@@ -2,19 +2,16 @@
 
 @section('content')
     <div>
-        <div class="mt-5 h-screen">
-            <div class="text-center ">
-                <h1 class="text-2xl font-montserrat ">Auto nástřiky</h1>
-                <h1 class="font-montserrat text-sm text-cool-gray-300">SUV a osobní auta</h1>
-            </div>
-            <x-home/>
-        </div>
+
+        <x-home/>
         
-        <div class="mt-1/12">
+        {{-- <x-galerie :thumbnails='$thumbnails'/> --}}
+
+        <div class="mt-1/12" id="galerie">
             <div class="text-center border-t  pt-3 border-gray-light">
                 <h1 class="text-2xl font-montserrat ">Galerie</h1>
             </div>
-
+        
             <div class="w-11/12 m-auto flex flex-col justify-center h-screen ">
                 <div class="mb-5">
                     <h1 class="font-poppins text-xl font-bold">Moje práce</h1>
@@ -35,27 +32,27 @@
                                 <div class="">
                                     <img src="{{ asset('posts/thumbNail/'.$thumbnail->cover) }}" class="h-52" >
                                 </div>
-
+        
                                 <div class="flex justify-between flex-row my-5 w-full">
                                     <div>
                                         <h1>{{ $thumbnail->car }}</h1>
                                     </div>
-
+        
                                     <div class="">
                                         <a href="/post/show/{{ $thumbnail->id }}" class="bg-red-custom text-gray-light  px-2 py-1 font-poppins rounded-md focus:outline-none ">
                                             Zobrazit více
                                         </a>
                                     </div>
-
+        
                                     <div>
                                         <h1>{{ $thumbnail->type }}</h1>
                                     </div>
                                 </div>
-
-
+        
+        
                                 </div>                            
                         @endforeach
-
+        
                     </div>
                 </div>
             
@@ -63,19 +60,9 @@
         
         
         </div>
-        
-        <div class="mt-1/12">
-            <div class="text-center border-t  pt-3 border-gray-light">
-                <h1 class="text-2xl font-montserrat ">Ceník</h1>
-            </div>
-            <x-cenik/>
-        </div>
-        
-        <div class="mt-1/12">
-            <div class="text-center border-t  pt-3 border-gray-light">
-                <h1 class="text-2xl font-montserrat ">Kontakty</h1>
-            </div>
-            <x-kontakt/>
-        </div>
+
+        <x-cenik/>
+
+        <x-kontakt/>
     </div>
 @endsection

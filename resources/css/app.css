@@ -5,6 +5,10 @@
 @import "tailwindcss/utilities";
 
 
+html {
+    scroll-behavior: smooth;
+}
+
 .active {
     background-color: #1C1D21;
 }

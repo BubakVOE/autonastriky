@@ -10,10 +10,10 @@ class HomeController extends Controller
 
     public function index(){
 
-        $thumbnail = Post::all();
+        $thumbnails = Post::all();
 
         return view('main/index', [
-            'thumbnails' => $thumbnail,
+            'thumbnails' => $thumbnails,
         ]);
     }
 

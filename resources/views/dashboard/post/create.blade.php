@@ -59,8 +59,8 @@
                             name="images[]" multiple> --}}
         
                     <div class="flex justify-center">
-                        <button type="submit" class="flex flex-row justify-evenly items-center w-32 bg-blue-light px-3 py-2 rounded-md ">
-                            <h1 class="font-montserrat text-gray-light">Nahrát</h1>
+                        <button type="submit" class="flex flex-row justify-evenly items-center w-32 bg-red-custom px-3 py-2 rounded-md focus:outline-none ">
+                            <h1 class="font-montserrat text-gray-light ">Nahrát</h1>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                             </svg>
